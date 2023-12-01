@@ -10,7 +10,7 @@ int main() {
 }
 
 void adv01() {
-    std::ifstream input(R"(C:\Users\Finn\CLionProjects\AdventOfCode\input01.txt)");
+    std::ifstream input(R"(..\input01.txt)");
     int res = 0;
     std::string nums[] = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
                           "0","1", "2", "3", "4", "5", "6", "7", "8", "9"};
@@ -18,7 +18,7 @@ void adv01() {
         int i = 0;
         int first = 0;
         int last = 0;
-        int firstindex = 9999;
+        int firstindex = INT_MAX;
         int lastindex = -1;
         for (std::string &s: nums) {
             i++;
