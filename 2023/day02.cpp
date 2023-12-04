@@ -14,8 +14,10 @@ void p2(std::ifstream &input);
 int main() {
     std::ifstream input(R"(..\input02.txt)");
     p1(input);
+    input.close();
     std::ifstream input2(R"(..\input02.txt)");
     p2(input2);
+    input2.close();
 }
 
 void p1(std::ifstream &input) {
@@ -33,9 +35,9 @@ void p1(std::ifstream &input) {
                 getline(ss3, line, ' ');
                 int num = std::stoi(line);
                 getline(ss3, line);
-                if (line == "green" && num > GREEN_LIMIT) valid = false;
-                if (line == "blue" && num > BLUE_LIMIT) valid = false;
-                if (line == "red" && num > RED_LIMIT) valid = false;
+                if ((line == "green" && num > GREEN_LIMIT) || (line == "blue" && num > BLUE_LIMIT) ||
+                    (line == "red" && num > RED_LIMIT))
+                    valid = false;
             }
         }
         if (valid) res += id;
@@ -59,8 +61,8 @@ void p2(std::ifstream &input) {
                 int num = std::stoi(line);
                 getline(ss3, line);
                 if (line == "green" && num > max_green) max_green = num;
-                if (line == "blue" && num > max_blue) max_blue = num;
-                if (line == "red" && num > max_red) max_red = num;
+                else if (line == "blue" && num > max_blue) max_blue = num;
+                else if (line == "red" && num > max_red) max_red = num;
             }
         }
         res += (max_green * max_blue * max_red);
