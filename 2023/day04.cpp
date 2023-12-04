@@ -83,11 +83,9 @@ void p2(std::ifstream &input) {
     std::vector<int> amount(cards.size());
     fill(amount.begin(), amount.end(), 1);
     for (int i = 0; i < cards.size(); i++) {
-        for (int j = 0; j < amount.at(i); j++) {
-            for (int k = 1; k <= getWinnerAmount(cards.at(i).first, cards.at(i).second); k++) {
-                if (k < cards.size()) {
-                    amount.at(k + i) += 1;
-                }
+        for (int k = 1; k <= getWinnerAmount(cards.at(i).first, cards.at(i).second); k++) {
+            if (k < cards.size()) {
+                amount.at(k + i) += amount.at(i);
             }
         }
     }
