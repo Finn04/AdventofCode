@@ -32,7 +32,7 @@ void p1(std::ifstream &input) {
     }
 
     int i = 0;
-    for (line; getline(input, line);) {
+    for (; getline(input, line);) {
         if (line.empty()) {
             for (auto &seeds: seeds_map) {
                 if (seeds.size() < i + 1) {
@@ -88,16 +88,7 @@ long long int get_i_map(long long int i, std::map<std::pair<long long int, long 
 
 void p2(std::ifstream &input) {
     std::vector<std::pair<long long int, long long int>> seeds_map;
-    std::map<std::pair<long long int, long long int>, long long int> soil_map;
-    std::map<std::pair<long long int, long long int>, long long int> fert_map;
-    std::map<std::pair<long long int, long long int>, long long int> water_map;
-    std::map<std::pair<long long int, long long int>, long long int> light_map;
-    std::map<std::pair<long long int, long long int>, long long int> temp_map;
-    std::map<std::pair<long long int, long long int>, long long int> humid_map;
-    std::map<std::pair<long long int, long long int>, long long int> loc_map;
-    std::vector<std::map<std::pair<long long int, long long int>, long long int>> vec = {soil_map, fert_map, water_map,
-                                                                                         light_map, temp_map, humid_map,
-                                                                                         loc_map};
+    std::vector<std::map<std::pair<long long int, long long int>, long long int>> vec(7);
     std::string line;
     getline(input, line, ':');
     getline(input, line);
