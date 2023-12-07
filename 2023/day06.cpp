@@ -4,20 +4,22 @@
 #include <vector>
 #include <sstream>
 
+#define FILEPATH R"(../input06.txt)"
+
 void p1(std::ifstream &input);
 
 void p2(std::ifstream &input);
 
 int main() {
-    std::ifstream input(R"(../input06.txt)");
+    std::ifstream input(FILEPATH);
     p1(input);
     input.close();
-    std::ifstream input2(R"(../input06.txt)");
+    std::ifstream input2(FILEPATH);
     p2(input2);
     input2.close();
 }
 
-long long int determine_possible_wins(std::pair<long long int,long long int> p) {
+long long int determine_possible_wins(std::pair<long long int, long long int> p) {
     long long int res = 0;
     for (long long i = 0; i < p.first; i++) {
         long long int time_left = p.first - i;
@@ -53,7 +55,7 @@ void p2(std::ifstream &input) {
     std::pair<long long int, long long int> race;
     int i = 0;
     for (std::string line; getline(input, line);) {
-        std::string temp ;
+        std::string temp;
         std::stringstream ss(line);
         int j = 0;
         getline(ss, line, ':');
