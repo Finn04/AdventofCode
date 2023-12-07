@@ -22,7 +22,7 @@ int main() {
 void p1(std::ifstream &input) {
     int i = 0;
     int j = 0;
-    int res = 1;
+    int res = 0;
     int curNum = 0;
     std::vector<std::pair<int, int>> vec;
     std::set<int> added;
@@ -46,7 +46,8 @@ void p1(std::ifstream &input) {
             } else {
                 if (curNum != 0) {
                     for (std::pair<int, int> pair: vec) {
-                        if ((pair.second >= j - ceil(log10(curNum)) - 1) && (pair.second <= j) &&
+                        int digAmount = (curNum == 1) ? 1 : (int) ceil(log10(curNum));
+                        if ((pair.second >= j - digAmount - 1) && (pair.second <= j) &&
                             (pair.first <= i + 1) &&
                             (pair.first >= i - 1)) {
                             res += curNum;
