@@ -4,6 +4,7 @@
 #include <sstream>
 #include <set>
 #include <algorithm>
+#include <cstdint>
 
 #define FILEPATH R"(../input07.txt)"
 
@@ -38,7 +39,7 @@ unsigned long int getCardVal(char &c, bool p2) {
     }
 }
 
-unsigned long int getRank(std::string &str, bool p2) {
+unsigned long long int getRank(std::string &str, bool p2) {
     uint8_t same = 1;
     char same_char = ' ';
     uint8_t same2 = 1;
@@ -56,12 +57,11 @@ unsigned long int getRank(std::string &str, bool p2) {
     }
     if (same_char != 'J' && p2) {
         same += j_count;
-    }else if(p2){
+    } else if (p2) {
         same = same2 + j_count;
-        if(same > 5) same = 5;
-        //std::cout << str << "\n";
+        if (same > 5) same = 5;
     }
-    unsigned long int res;
+    unsigned long long int res;
     if (same >= 4) res = 10000000000 * (same + 2);
     else if (same == 3) res = 40000000000 + (same2 - 1) * 10000000000;
     else if (same == 2) res = 20000000000 + (same2 - 1) * 10000000000;
@@ -90,7 +90,6 @@ void p1(std::ifstream &input) {
     }
     int j = 1;
     for (auto &p: hands) {
-        //std::cout << p.first << "," << p.second << "\n";
         res += (j * p.second);
         j++;
     }
@@ -114,7 +113,6 @@ void p2(std::ifstream &input) {
     }
     int j = 1;
     for (auto &p: hands) {
-        std::cout << p.first << "," << p.second << "\n";
         res += (j * p.second);
         j++;
     }
