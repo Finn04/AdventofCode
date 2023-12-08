@@ -7,9 +7,6 @@
 #include <cmath>
 #include <numeric>
 
-#define SEARCH_START 600
-#define RANGE 30
-#define SEARCH_END 1200
 
 void p1(std::ifstream &input);
 
