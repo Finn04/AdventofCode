@@ -70,7 +70,6 @@ void p2(std::ifstream &input) {
         if (key[key.length() - 1] == 'A') startLoc.push_back(key);
     }
     std::vector<int> stepAmount;
-    std::vector<std::string> finalLoc;
     for (auto p: startLoc) {
         int i = 0;
         int steps = 0;
@@ -81,7 +80,6 @@ void p2(std::ifstream &input) {
             if (i == instructions.length()) i = 0;
         }
         stepAmount.push_back(steps);
-        finalLoc.push_back(p);
     }
-    std::cout << std::accumulate(stepAmount.begin(),stepAmount.end(),1,[](int a,int b){return std::lcm(a,b);}) << "\n";
+    std::cout << (unsigned long long int)std::accumulate(stepAmount.begin(),stepAmount.end(),(unsigned long long int)1,[](unsigned long long int a,unsigned long long int b) -> unsigned long long int{return (unsigned long long int)std::lcm(a,b);}) << "\n";
 }
